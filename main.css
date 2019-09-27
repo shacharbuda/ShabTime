@@ -1,0 +1,23 @@
+body {
+	direction: rtl;
+}
+
+.container {
+	display: flex;
+	margin: auto;
+	height: 100px;
+	width: 50%;
+	justify-content: space-between;
+}
+
+
+.row {
+	width: 100px;
+	border: 1px solid red;
+	text-align: center;
+}
+
+
+.row > .category-title {
+	border-bottom: 1px solid black;
+}

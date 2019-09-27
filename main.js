@@ -7,8 +7,9 @@ $(document).ready(() => {
 });
 
 const writeItems = (items) => {
-	const categories = ["candles", "havdalah"];
-	categories.forEach(category => {
+	const timeCategories = ["candles", "havdalah"];
+	
+	timeCategories.forEach(category => {
 		const valueOfCategory = items.find((item) => item.category === category);
 		const timeAsText = new Date(valueOfCategory.date).toLocaleTimeString();
 		const timeWithoutSeconds = timeAsText.split(':').slice(0, 2).join(':');

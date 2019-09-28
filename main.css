@@ -19,5 +19,6 @@ body {
 
 
 .row > .category-title {
+	white-space: nowrap;
 	border-bottom: 1px solid black;
 }

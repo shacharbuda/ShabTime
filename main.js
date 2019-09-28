@@ -28,7 +28,8 @@ const writeItems = (items) => {
 	const PARASH_ID = "parashat";
 
 	const parashValue = items.find((item) => item.category === PARASH_ID);
-	$(`#${PARASH_ID}`).attr('href', parashValue.link);
-	$(`#${PARASH_ID}`).attr('title', 'לפרטים נוספים על הפרשה... (אנגלית)');
-	$(`#${PARASH_ID}`).text(parashValue.hebrew);
+	const parashHolderElm = $(`#${PARASH_ID}`);
+	parashHolderElm.attr('href', parashValue.link);
+	parashHolderElm.attr('title', 'לפרטים נוספים על הפרשה... (אנגלית)');
+	parashHolderElm.text(parashValue.hebrew);
 }

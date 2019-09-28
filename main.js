@@ -1,10 +1,18 @@
-$(document).ready(() => {
-	console.log("here");
+$(document).ready(() => {	
 	$.get('https://www.hebcal.com/shabbat/?cfg=json&geonameid=294981&m=18', (data) => {
-		const items = data.items;
-		writeItems(items);
+		handleDataArrived(data);
+	}).fail(() => {
+		alert("שגיאה");
 	});
 });
+
+const handleDataArrived = (data) => {
+	$(".spinner-container").fadeOut();
+	$(".container").fadeIn();
+
+	const items = data.items;
+	writeItems(items);
+}
 
 const writeItems = (items) => {
 	const timeCategories = ["candles", "havdalah"];

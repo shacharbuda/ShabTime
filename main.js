@@ -1,5 +1,25 @@
+let CURRENT_LOCATION = '294981';
+
 $(document).ready(() => {	
-	$.get('https://www.hebcal.com/shabbat/?cfg=json&geonameid=294981&m=18', (data) => {
+	alert("ready")
+	navigator.geolocation.getCurrentPosition((position) => {
+
+		let lat, lng;
+		const {coords} = position;
+		lat = coords.latitude;
+		lng = coords.longitude;
+
+		alert('lat :' + lat);
+		console.log('lng :', lng);
+		$.get(`http://api.geonames.org/findNearbyPlaceName?lat=${lat}&lng=${lng}&username=shacharbuda`, (xmlData) => {
+			console.log('data :', xmlData);
+			const text = new XMLSerializer().serializeToString(xmlData.documentElement);
+			$(".container").text(text);
+		})
+	}, (error) => alert, {enableHighAccuracy: true, timeout: 3 * 1000});
+
+	
+	$.get(`https://www.hebcal.com/shabbat/?cfg=json&geonameid=${CURRENT_LOCATION}&m=18`, (data) => {
 		handleDataArrived(data);
 	}).fail(() => {
 		alert("שגיאה");

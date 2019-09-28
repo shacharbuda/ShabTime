@@ -28,5 +28,7 @@ const writeItems = (items) => {
 	const PARASH_ID = "parashat";
 
 	const parashValue = items.find((item) => item.category === PARASH_ID);
+	$(`#${PARASH_ID}`).attr('href', parashValue.link);
+	$(`#${PARASH_ID}`).attr('title', 'לפרטים נוספים על הפרשה... (אנגלית)');
 	$(`#${PARASH_ID}`).text(parashValue.hebrew);
 }

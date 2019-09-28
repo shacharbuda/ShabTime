@@ -14,15 +14,19 @@ const handleDataArrived = (data) => {
 	writeItems(items);
 }
 
+const dateToShortTimeString = (date) => {
+	const settingsForShortTime = {hour: "2-digit", minute: "2-digit"};
+	return (date.toLocaleTimeString('he-IL', settingsForShortTime));
+}
+
 const writeItems = (items) => {
 	const timeCategories = ["candles", "havdalah"];
 	
 	timeCategories.forEach(category => {
 		const valueOfCategory = items.find((item) => item.category === category);
-		const timeAsText = new Date(valueOfCategory.date).toLocaleTimeString();
-		const timeWithoutSeconds = timeAsText.split(':').slice(0, 2).join(':');
+		const timeAsText = dateToShortTimeString(new Date(valueOfCategory.date));
 
-		$(`#${category}`).text(timeWithoutSeconds);
+		$(`#${category}`).text(timeAsText);
 	})
 
 	const PARASH_ID = "parashat";

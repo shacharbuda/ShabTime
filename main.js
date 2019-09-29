@@ -1,5 +1,5 @@
 $(document).ready(() => {	
-	$.get('https://www.hebcal.com/shabbat/?cfg=json&geonameid=294981&m=18', (data) => {
+	$.get('https://www.hebcal.com/shabbat/?cfg=json&geonameid=294981&m=40', (data) => {
 		handleDataArrived(data);
 	}).fail(() => {
 		alert("שגיאה");

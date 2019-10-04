@@ -20,20 +20,44 @@ const dateToShortTimeString = (date) => {
 }
 
 const writeItems = (items) => {
-	const timeCategories = ["candles", "havdalah"];
-	
-	timeCategories.forEach(category => {
-		const valueOfCategory = items.find((item) => item.category === category);
-		const timeAsText = dateToShortTimeString(new Date(valueOfCategory.date));
-
-		$(`#${category}`).text(timeAsText);
-	})
 
 	const PARASH_ID = "parashat";
-
+	const CANDLES_ID = "candles";
+	const HAVDALAH_ID = "havdalah";
+	
 	const parashValue = items.find((item) => item.category === PARASH_ID);
+	// Get shabbat date by parash item
+	const shabbatDate = new Date(parashValue.date);
 	const parashHolderElm = $(`#${PARASH_ID}`);
 	parashHolderElm.attr('href', parashValue.link);
 	parashHolderElm.attr('title', 'לפרטים נוספים על הפרשה... (אנגלית)');
 	parashHolderElm.text(parashValue.hebrew);
+
+	const shabbatOnlyItems = items.filter((item) => isDateEqualNoTime(new Date(item.date), shabbatDate));
+	const fridayOnlyItems = items.filter((item) => isDateEqualNoTime(new Date(item.date), getDayBefore(shabbatDate)));
+
+	console.log('shabbatOnlyItems :', shabbatOnlyItems);
+	console.log('fridayOnlyItems :', fridayOnlyItems);
+
+	handleTimeCategory(CANDLES_ID, fridayOnlyItems);
+	handleTimeCategory(HAVDALAH_ID, shabbatOnlyItems);
+}
+
+const handleTimeCategory = (category, items) => {
+	const valueOfCategory = items.find((item) => item.category === category);
+	const timeAsText = dateToShortTimeString(new Date(valueOfCategory.date));
+
+	$(`#${category}`).text(timeAsText);	
+}
+
+const getDayBefore = (date) => {
+	const res = new Date(date);
+	res.setDate(res.getDate() - 1);
+	return res;
+}
+
+const isDateEqualNoTime = (date1, date2) => {
+	const date1NoTime = new Date(Date.UTC(date1.getUTCFullYear(), date1.getUTCMonth(), date1.getUTCDate()));
+	const date2NoTime = new Date(Date.UTC(date2.getUTCFullYear(), date2.getUTCMonth(), date2.getUTCDate()));
+	return (date1NoTime.getTime() === date2NoTime.getTime());
 }

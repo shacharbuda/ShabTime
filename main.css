@@ -46,8 +46,12 @@ body {
 	height: 100px;
 	border: 1px solid red;
 	text-align: center;
+	transition: transform 0.3s;
 }
 
+.my-row:hover, .my-row:active {
+	transform: rotate(360deg);
+}
 
 .my-row > .category-title {
 	margin: 0;

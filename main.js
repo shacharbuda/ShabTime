@@ -10,7 +10,7 @@ var currentLocation;
 const getPosUrl = (lat, lng) => `geo=pos&latitude=${lat}&longitude=${lng}&tzid=${TIMEZONE}`;
 
 $(document).ready(() => {
-	$('#current-location').text('moti')
+	// TODO: show city name, not coords!
 	highlightCurrentLocationChange();
 	setCurrentLocation(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lng);
 	getDataForCurrentLocation();

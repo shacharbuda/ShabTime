@@ -13,18 +13,21 @@ $(document).ready(() => {
 	$('#current-location').text('moti')
 	highlightCurrentLocationChange();
 	setCurrentLocation(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lng);
+	getDataForCurrentLocation();
 	$(".spinner-container").fadeOut();
 	$('#location-btn').click(setCurrentLocationByDeviceLocation);
-	$('#data-btn').click(() => {
-		$(".spinner-container").fadeIn();
-		const posUrl = getPosUrl(currentLocation.lat, currentLocation.lng);
-		$.get(`https://www.hebcal.com/shabbat/?cfg=json&${posUrl}&m=40`, (data) => {
-			handleDataArrived(data);
-		}).fail(() => {
-			alert("שגיאה");
-		});
-	});
+	$('#data-btn').click(getDataForCurrentLocation);
 });
+
+const getDataForCurrentLocation = () => {
+	$(".spinner-container").fadeIn();
+	const posUrl = getPosUrl(currentLocation.lat, currentLocation.lng);
+	$.get(`https://www.hebcal.com/shabbat/?cfg=json&${posUrl}&m=40`, (data) => {
+		handleDataArrived(data);
+	}).fail(() => {
+		alert("שגיאה");
+	});
+};
 
 const highlightCurrentLocationChange = () => {
 	$('#current-location').on('DOMSubtreeModified', function() {

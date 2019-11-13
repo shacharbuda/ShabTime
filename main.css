@@ -16,10 +16,15 @@ body {
 }
 
 .container {
-	display: flex;
-	margin: auto;
 	height: 90%;
 	width: 50%;
+}
+
+.container > .data {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	margin: auto;
 	align-items: center;
 	justify-content: space-between;
 }
@@ -27,9 +32,16 @@ body {
 .footer {
 	height: 10%;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 }
 
+.highlight-text {
+	background: lightgreen;
+}
+
+.current-location-holder {
+	text-align: center;
+}
 
 @media only screen and (max-width: 500px) {
 	.my-row {

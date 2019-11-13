@@ -1,5 +1,15 @@
+// TODO: add a 'only in israel' message at bottom of page. create footer while at it.
+const TIMEZONE = 'Asia%2FJerusalem';
+const DEFAULT_LOCATION = {
+	lat: 32.083377,
+	lng: 34.850648
+};
+
+const getPosUrl = (lat, lng) => `geo=pos&latitude=${lat}&longitude=${lng}&tzid=${TIMEZONE}`;
+
 $(document).ready(() => {	
-	$.get('https://www.hebcal.com/shabbat/?cfg=json&geonameid=294981&m=40', (data) => {
+	const defaultPosUrl = getPosUrl(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lng);
+	$.get(`https://www.hebcal.com/shabbat/?cfg=json&${defaultPosUrl}&m=40`, (data) => {
 		handleDataArrived(data);
 	}).fail(() => {
 		alert("שגיאה");

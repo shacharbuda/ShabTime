@@ -5,14 +5,19 @@ const DEFAULT_LOCATION = {
 	lng: 34.850648
 };
 
+var currentLocation = DEFAULT_LOCATION;
+
 const getPosUrl = (lat, lng) => `geo=pos&latitude=${lat}&longitude=${lng}&tzid=${TIMEZONE}`;
 
 $(document).ready(() => {	
-	const defaultPosUrl = getPosUrl(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lng);
-	$.get(`https://www.hebcal.com/shabbat/?cfg=json&${defaultPosUrl}&m=40`, (data) => {
-		handleDataArrived(data);
-	}).fail(() => {
-		alert("שגיאה");
+	$('#location-btn').click(() => alert('cliked'));
+	$('#data-btn').click(() => {
+		const posUrl = getPosUrl(currentLocation.lat, currentLocation.lng);
+		$.get(`https://www.hebcal.com/shabbat/?cfg=json&${posUrl}&m=40`, (data) => {
+			handleDataArrived(data);
+		}).fail(() => {
+			alert("שגיאה");
+		});
 	});
 });
 

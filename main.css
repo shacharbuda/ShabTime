@@ -67,7 +67,6 @@ body {
 
 .my-row {
 	height: 100px;
-	border: 1px solid red;
 	text-align: center;
 	transition: transform 0.3s;
 }
@@ -80,6 +79,10 @@ body {
 	margin: 0;
 	height: 40px;
 	border-bottom: 1px solid black;
+}
+
+.my-row  {
+	width: 150px;
 }
 
 .my-row > .value-container {

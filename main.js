@@ -59,7 +59,12 @@ const setCurrentLocationByDeviceLocation = () => {
 
 const setCurrentLocation = (lat, lng) => {
 	currentLocation = {lat, lng};
-	$('#current-location').text(`${lat}, ${lng}`);
+	$('#current-location').text(`${lat}, ${lng},`);
+	$.get(`http://api.geonames.org/findNearbyWikipediaJSON?lat=${lat}&lng=${lng}&lang=he&username=shacharbuda`, ({geonames: articles}) => {
+		const nearestPlaceName = articles[0].title;
+		$('#current-place').text(nearestPlaceName);
+	}).fail(() => {
+	});
 }
 
 const handleDataArrived = (data) => {

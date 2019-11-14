@@ -33,14 +33,11 @@ const highlightCurrentLocationChange = () => {
 	$('#current-location').on('DOMSubtreeModified', function() {
 		let loopCount = 3;
 		const highlightLoop = () => {
-			if (!loopCount) return;
-			loopCount--;
+			if (!loopCount--) return;
 			$(this).addClass('highlight-text');
 			setTimeout(() => {
 				$(this).removeClass('highlight-text');
-				setTimeout(() => {
-					highlightLoop();
-				}, 500);
+				setTimeout(highlightLoop, 500);
 			}, 300);
 		}
 		highlightLoop();

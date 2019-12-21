@@ -10,7 +10,6 @@ var currentLocation;
 const getPosUrl = (lat, lng) => `geo=pos&latitude=${lat}&longitude=${lng}&tzid=${TIMEZONE}`;
 
 $(document).ready(() => {
-	// TODO: show city name, not coords!
 	highlightCurrentLocationChange();
 	setCurrentLocation(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lng);
 	getDataForCurrentLocation();
@@ -60,11 +59,25 @@ const setCurrentLocationByDeviceLocation = () => {
 const setCurrentLocation = (lat, lng) => {
 	currentLocation = {lat, lng};
 	$('#current-location').text(`${lat}, ${lng}`);
-	$.get(`http://api.geonames.org/findNearbyWikipediaJSON?lat=${lat}&lng=${lng}&lang=he&username=shacharbuda`, ({geonames: articles}) => {
-		const nearestPlaceName = articles[0].title;
-		$('#current-place').text(nearestPlaceName);
-	}).fail(() => {
-	});
+
+	const CLIENT_ID = `KEUQLBCSY4DJ4R4WCSBIBK15Y1IBB5QYRWELRB4U1WFBI0UE`;
+	const CLIENT_SECRET = `SIBHETJ4X0JBO4435MJLBZE4FSXLUKT1YMM40FDQFF54D1UD`;
+	const params = `client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=20191221`;
+
+	const url = `https://api.foursquare.com/v2/venues/search?${params}&ll=${lat},${lng}&intent=checkin`;
+
+	$.get(url, (data) => {
+		const venues = data.response.venues;
+		const venuesWithCity = _.filter(venues, v => !!v.location && !!v.location.city);
+		const citiesLocations = _.map(venuesWithCity, v => v.location);
+		const nearestLocation = _.sortBy(citiesLocations, location => location.distance)[0];
+		const nearestCity = nearestLocation.city;
+
+		$('.current-location-holder#city-holder').fadeIn();
+		$('#current-place').text(nearestCity);
+	}).fail((err) => {
+		console.error('error in getting nearest city: ', err);
+	})
 }
 
 const handleDataArrived = (data) => {

@@ -12,7 +12,6 @@ const getPosUrl = (lat, lng) => `geo=pos&latitude=${lat}&longitude=${lng}&tzid=$
 $(document).ready(() => {
 	highlightCurrentLocationChange();
 	setCurrentLocation(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lng);
-	getDataForCurrentLocation();
 	$(".spinner-container").fadeOut();
 	$('#location-btn').click(setCurrentLocationByDeviceLocation);
 	$('#data-btn').click(getDataForCurrentLocation);
@@ -59,6 +58,8 @@ const setCurrentLocationByDeviceLocation = () => {
 const setCurrentLocation = (lat, lng) => {
 	currentLocation = {lat, lng};
 	$('#current-location').text(`${lat}, ${lng}`);
+
+	getDataForCurrentLocation();
 
 	const CLIENT_ID = `KEUQLBCSY4DJ4R4WCSBIBK15Y1IBB5QYRWELRB4U1WFBI0UE`;
 	const CLIENT_SECRET = `SIBHETJ4X0JBO4435MJLBZE4FSXLUKT1YMM40FDQFF54D1UD`;

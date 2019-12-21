@@ -20,11 +20,19 @@ body {
 	width: 50%;
 }
 
+#city-holder {
+	display: none;
+}
 
 .current-location-holder {
 	text-align: center;
 	height: 48px;
 	margin-bottom: 12px;
+}
+
+.current-location-holder > p {
+	font-weight: bold;
+	margin-bottom: 0;
 }
 
 .container > .data {

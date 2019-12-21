@@ -99,3 +99,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+.card-body {
+	height: 120px;
+}

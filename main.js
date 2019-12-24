@@ -14,7 +14,8 @@ $(document).ready(() => {
 	setCurrentLocation(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lng);
 	$(".spinner-container").fadeOut();
 	$('#location-btn').click(setCurrentLocationByDeviceLocation);
-	$('#data-btn').click(getDataForCurrentLocation);
+	// DEPRECATED as click on location-btn updates data as well.
+	// $('#data-btn').click(getDataForCurrentLocation);
 });
 
 const getDataForCurrentLocation = () => {

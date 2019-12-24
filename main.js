@@ -120,9 +120,15 @@ const writeItems = (items) => {
 
 const handleTimeCategory = (category, items) => {
 	const valueOfCategory = items.find((item) => item.category === category);
-	const timeAsText = dateToShortTimeString(new Date(valueOfCategory.date));
-
-	$(`#${category}`).text(timeAsText);	
+	let timeAsText;
+	try {
+		timeAsText = dateToShortTimeString(new Date(valueOfCategory.date));
+	} catch(e) {
+		console.error('Error in handleTimeCategory for ' + category + ':\n\n' + e);
+		timeAsText = 'N\\A';
+	} finally {
+		$(`#${category}`).text(timeAsText);	
+	}
 }
 
 const getDayBefore = (date) => {

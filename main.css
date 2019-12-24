@@ -51,6 +51,10 @@ body {
 	justify-content: space-around;
 }
 
+.footer > * {
+	margin: 0 6px;
+}
+
 .highlight-text {
 	background: lightgreen;
 }
@@ -102,4 +106,9 @@ body {
 
 .card-body {
 	height: 120px;
+}
+
+#bug-btn {
+	display: flex;
+	align-items: center;
 }

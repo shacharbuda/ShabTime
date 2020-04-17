@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<!--
+<!--
 
  __  __     _   _   _____ _           ___      _   
 |  \/  |___| |_(_) |_   _| |_  ___   / __|__ _| |_ 
@@ -10,74 +10,82 @@
 Developed By Shachar Buda
 
 	-->
-	<!--
+<!--
 		Contributors:
 		- Ido Nov
 	-->
+
 <head>
-	<meta charset='utf-8'>
-	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<title>ShabTime</title>
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
-	<link rel="manifest" href="./manifest.json" />
-	<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-	<!-- JQuery -->
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-	<!-- Lodash -->
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js'></script>
-	<!-- Bootstrap -->
-	<link rel='stylesheet' type='text/css' media='screen' href='bootstrap.css'>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src='main.js'></script>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>ShabTime</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <!-- JQuery -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <!-- Lodash -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js'></script>
+  <!-- Bootstrap -->
+  <link rel='stylesheet' type='text/css' media='screen' href='bootstrap.css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script src='main.js'></script>
 </head>
+
 <body>
-	<div class="spinner-container">
-		<div class="spinner-border" ></div>
-	</div>
-	<div class="container">
-		<div class="current-location-holder">
-			<p>מיקום נוכחי</p>
-			<span id="current-location"></span>
-		</div>
-		<div class="current-location-holder" id="city-holder">
-			<p>מקום ידוע קרוב</p>
-			<span id="current-place"></span>
-		</div>
-		<div class="data" style="display: none">
-			<div class="my-row">
-			<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">פרשה</h5>
-						<a id="parashat" class="card-text"  target="_blank" rel="noopener noreferrer"></a>
-					</div>
-				</div>
-			</div>
-			<div class="my-row">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">כניסת שבת</h5>
-						<p class="card-text" id="candles"></p>
-					</div>
-				</div>
-			</div>
-			<div class="my-row">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">יציאת שבת</h5>
-							<p class="card-text" id="havdalah"></p>
-						</div>
-					</div>
-			</div>
-		</div>
-	</div>
-	<div class="footer">
-		<button id="location-btn" class="btn btn-primary">עדכן מיקום נוכחי</button>
-		<!-- <button id="data-btn" class="btn btn-primary">חשב זמנים לפי מיקום</button> -->
-		<a id="bug-btn" target="_blank" class="btn btn-danger" href="mailto:shacbud@gmail.com?subject=Bug%20On%20ShabTime&body=היי,%20משתמש%20יקר.%20תודה%20שאכפת%20לך.%20כאן%20תוכל%20לפרט%20על%20הבאג%20ואשתדל%20להגיב%20בקרוב">
-			דווח על באג
-		</a>
-	</div>
+  <div class="spinner-container">
+    <div class="spinner-border"></div>
+  </div>
+  <div class="container">
+    <div class="current-location-holder">
+      <p>מיקום נוכחי</p>
+      <span id="current-location"></span>
+    </div>
+    <div class="current-location-holder" id="city-holder">
+      <p>מקום ידוע קרוב</p>
+      <span id="current-place"></span>
+    </div>
+    <div class="data" style="display: none">
+      <div class="my-row">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">פרשה</h5>
+            <a id="parashat" class="card-text" target="_blank" rel="noopener noreferrer"></a>
+          </div>
+        </div>
+      </div>
+      <div class="my-row">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">כניסת שבת</h5>
+            <p class="card-text" id="candles"></p>
+          </div>
+        </div>
+      </div>
+      <div class="my-row">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">יציאת שבת</h5>
+            <p class="card-text" id="havdalah"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <button id="location-btn" class="btn btn-primary">עדכן מיקום נוכחי</button>
+    <!-- <button id="data-btn" class="btn btn-primary">חשב זמנים לפי מיקום</button> -->
+    <a id="bug-btn" target="_blank" class="btn btn-danger"
+      href="mailto:shacbud@gmail.com?subject=Bug%20On%20ShabTime&body=היי,%20משתמש%20יקר.%20תודה%20שאכפת%20לך.%20כאן%20תוכל%20לפרט%20על%20הבאג%20ואשתדל%20להגיב%20בקרוב">
+      דווח על באג
+    </a>
+  </div>
 </body>
+
 </html>
